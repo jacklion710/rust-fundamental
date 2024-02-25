@@ -39,13 +39,3 @@ Lesson 8: Concurrency in Rust
 Rust’s take on concurrency and safety
 Using threads to run code simultaneously
 Shared-state concurrency and message-passing concurrency
-
-Lesson 9: Rust's Ecosystem and Tooling
-Discovering crates and modules
-Managing dependencies with Cargo
-Rust’s testing framework for unit tests, integration tests
-
-Lesson 10: Real-world Rust Project
-Planning and setting up a small project
-Applying what you've learned in a practical context
-Project review and understanding Rustacean idioms
