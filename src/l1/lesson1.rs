@@ -30,6 +30,6 @@ pub fn run() {
 }
 
 // Defining a function that adds two to a number.
-fn add_two(x: i32) -> i32 {
+fn add_two(x: i32) -> i32 { // -> syntax indicates what type of variable is expected on return
     x + 2
 }
