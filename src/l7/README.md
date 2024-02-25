@@ -4,7 +4,7 @@ Welcome to Lesson 7 in our Rust programming series, where we dive deeper into so
 
 ## Understanding Traits for Shared Behavior
 
-Traits in Rust allow us to define shared behavior in a way that can be abstracted over different types. This is similar to interfaces in other languages but with more power and flexibility.
+First, a quick review of traits in Rust: Traits, allow us to define shared behavior in a way that can be abstracted over different types. This is similar to interfaces in other languages but with more power and flexibility.
 
 ### Defining and Implementing Traits
 
@@ -59,9 +59,9 @@ where
 
 Trait objects allow us to perform dynamic dispatch in Rust, enabling a form of runtime polymorphism.
 
-### Using Trait Objects
+### Dynamic Dispatch and Trait Objects
 
-You can use trait objects to call methods on types that implement specific traits, even if their concrete types are not known at compile time:
+In Rust, dynamic dispatch is a mechanism that allows a program to call methods on a type at runtime, even when the exact type of the value is not known at compile time. This is achieved through the use of trait objects, which are essentially pointers to both an instance of a type implementing a specific trait and a table used to look up trait methods on that type at runtime. This table is known as a vtable.
 
 ```rust
 fn print_summaries(items: &[&dyn Summary]) {
@@ -71,9 +71,21 @@ fn print_summaries(items: &[&dyn Summary]) {
 }
 ```
 
-This function can accept a slice of any type that implements the `Summary` trait, demonstrating Rust's capability for dynamic dispatch.
+Here's what happens in the `print_summaries` function:
 
-ELABORATE ON MAIN FUNCTION run();
+* **Function Signature:** The function takes a slice of trait objects (`&[&dyn Summary]`). Each element in the slice is a reference to a type that implements the `Summary` trait. The `dyn` keyword is used to indicate dynamic dispatch.
+
+* **Dynamic Dispatch in Action:** When the `summarize` method is called on each item within the loop, Rust uses dynamic dispatch to determine the correct method to call based on the actual type of `item` at runtime. This allows different types implementing the `Summary` trait to be handled polymorphically through a common interface.
+
+* **Flexibility and Abstraction:** This pattern enables the `print_summaries` function to operate on a heterogeneous collection of types. As long as each type implements the `Summary` trait, it can be included in the `items` slice and processed by the function. This promotes code reuse and abstraction by allowing the function to work with any type that conforms to a specific behavior (`Summary` in this case) rather than a specific type.
+
+## The Significance in Rust's Ecosystem
+
+* **Safety and Concurrency:** Rust's emphasis on safety extends to its concurrency model. By leveraging trait objects for dynamic dispatch, Rust ensures that shared behavior across different types can be accessed safely, even in concurrent contexts. This aligns with Rust's goals of preventing data races and ensuring type safety across threads.
+
+* **Performance Considerations:** While dynamic dispatch provides flexibility and enables polymorphism, it comes with a slight runtime cost due to the indirection required to look up methods in the vtable. However, Rust's efficient compilation and runtime management often minimize this overhead, making it a viable option for many scenarios where type flexibility is required.
+
+* **Use in Real-World Rust Applications:** This pattern is widely used in Rust libraries and applications, especially those that require operating on collections of objects with shared behavior but different underlying types. It's a powerful tool in the Rust developer's toolkit, allowing for elegant solutions to complex problems involving multiple types.
 
 ## Conclusion
 
