@@ -2,6 +2,7 @@ use std::env;
 
 mod l1;
 mod l2;
+mod l3;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -10,7 +11,8 @@ fn main() {
         match args[1].as_str() {
             "lesson1" => l1::lesson1::run(),
             "lesson2" => l2::lesson2::run(),
-            // Add more cases as you add more lessons
+            "lesson3" => l3::lesson3::run(),
+            // Add more cases as more lessons are added
             _ => println!("Lesson not found"),
         }
     } else {
