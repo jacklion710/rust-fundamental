@@ -103,7 +103,8 @@ match some_u8_value {
 }
 ```
 
-Simplified with `if let`
+### Simplified with `if let`
+
 `if let` simplifies this pattern:
 
 ```rust
