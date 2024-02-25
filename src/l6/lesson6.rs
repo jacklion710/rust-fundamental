@@ -1,3 +1,4 @@
+// lesson6.rs
 use std::collections::HashMap;
 
 pub fn run() {
