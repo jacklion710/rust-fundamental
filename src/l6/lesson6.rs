@@ -62,7 +62,7 @@ pub trait Summary {
 }
 
 // Implementing trait for a struct
-#[allow(dead_code)] // ELABORATE ON THIS
+#[allow(dead_code)] 
 struct NewsArticle {
     headline: String,
     location: String,
